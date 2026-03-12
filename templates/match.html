@@ -1,1 +1,77 @@
-
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="card bg-dark border-primary mb-4">
+        <div class="card-header text-center bg-primary">
+            <h3>Clown United — {{ opponent }} <span class="badge bg-warning">{{ score }}</span></h3>
+            <small class="text-light">03:08 → 90:00 | Тактика: {{ tactic.upper() }}</small>
+        </div>
+        
+        <!-- ПОЛЕ КАК НА СКРИНЕ -->
+        <div class="pitch-container position-relative" style="height:420px; background: linear-gradient(#0b7a0b, #0b7a0b); border: 8px solid #fff; margin:15px; border-radius:10px; overflow:hidden;">
+            <!-- Разметка поля -->
+            <svg width="100%" height="100%" style="position:absolute">
+                <rect x="5%" y="5%" width="90%" height="90%" fill="none" stroke="#fff" stroke-width="4"/>
+                <circle cx="50%" cy="50%" r="80" fill="none" stroke="#fff" stroke-width="4"/>
+                <line x1="50%" y1="5%" x2="50%" y2="95%" stroke="#fff" stroke-width="4"/>
+            </svg>
+            
+            <!-- Наши игроки (позиции как в Hattrick) -->
+            <div class="player position-absolute text-center" style="top:12%;left:48%; color:#ffd700;">GK<br><strong>Kolya Keeper</strong></div>
+            <div class="player position-absolute text-center" style="top:28%;left:15%;">DF<br><strong>Borya Back</strong></div>
+            <div class="player position-absolute text-center" style="top:28%;left:35%;">DF<br><strong>Igor Iron</strong></div>
+            <div class="player position-absolute text-center" style="top:28%;left:65%;">DF<br><strong>Tolya Tackle</strong></div>
+            <div class="player position-absolute text-center" style="top:28%;left:82%;">DF<br><strong>Gosha Goal</strong></div>
+            
+            <div class="player position-absolute text-center" style="top:48%;left:22%;">MF<br><strong>Misha Mid</strong></div>
+            <div class="player position-absolute text-center" style="top:48%;left:45%;">MF<br><strong>Vitya Wing</strong></div>
+            <div class="player position-absolute text-center" style="top:48%;left:70%;">MF<br><strong>Roma Rocket</strong></div>
+            
+            <div class="player position-absolute text-center" style="top:68%;left:25%;">FW<br><strong>Sasha Strike</strong></div>
+            <div class="player position-absolute text-center" style="top:68%;left:50%;">FW<br><strong>Petya Clown</strong></div>
+            <div class="player position-absolute text-center" style="top:68%;left:75%;">FW<br><strong>Vasya Ball</strong></div>
+            
+            <!-- Соперник (серые) -->
+            <div class="player position-absolute text-center" style="top:88%;left:48%; color:#ccc; font-size:0.9em;">Opp GK</div>
+            <!-- ... (ещё 10 серых для красоты, но сократил для читаемости) -->
+        </div>
+        
+        <!-- ЖЁЛТЫЙ БАННЕР ПОГОДЫ -->
+        <div class="alert alert-warning mx-3 text-center fw-bold fs-5">
+            {{ weather_banner }}
+        </div>
+        
+        <!-- ПРЯМАЯ ТРАНСЛЯЦИЯ -->
+        <div class="px-3">
+            <h5>📺 Прямая трансляция</h5>
+            <div class="bg-secondary p-3 rounded">
+                <strong>Судья:</strong> {{ referee }}<br>
+                <strong>Погода:</strong> {{ weather }} (дождливый день на стадионе Chernozem)<br><br>
+                <strong>События матча:</strong><br>
+                {% for ev in events %}
+                    {{ ev }}<br>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- ЧАТ И СООБЩЕСТВО -->
+        <div class="px-3 mt-3">
+            <div class="bg-success p-2 rounded text-white">💬 Чат (Clown United - {{ opponent }})</div>
+            <div class="bg-dark p-3 border border-success">Пока сообщений нет. Напиши первым!</div>
+            <input type="text" class="form-control mt-2" placeholder="Написать...">
+        </div>
+        
+        <div class="px-3 mt-3">
+            <div class="bg-info p-2 rounded">🗣️ Мнения сообщества</div>
+            <div class="bg-dark p-3">Пока никто не написал пресс-релиз.</div>
+        </div>
+        
+        <div class="text-center my-3">
+            <a href="/" class="btn btn-primary">← Вернуться в меню</a>
+        </div>
+    </div>
+</div>
+<style>
+.player { background:rgba(0,0,0,0.7); padding:6px 10px; border-radius:8px; font-size:13px; color:white; box-shadow:0 0 8px gold; }
+</style>
+{% endblock %}
