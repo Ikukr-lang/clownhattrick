@@ -1,1 +1,15 @@
-
+{% extends "base.html" %}
+{% block content %}
+<h2>Тренировка команды</h2>
+<form method="post">
+    <select name="focus" class="form-select">
+        <option value="def">Защита</option>
+        <option value="att">Атака</option>
+        <option value="wing">Крылья</option>
+        <option value="pass">Пасы</option>
+        <option value="gk">Вратарь</option>
+        <option value="stam">Выносливость</option>
+    </select>
+    <button type="submit" class="btn btn-primary mt-3">Провести тренировку</button>
+</form>
+{% endblock %}
