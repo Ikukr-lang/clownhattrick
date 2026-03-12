@@ -1,1 +1,16 @@
-
+{% extends "base.html" %}
+{% block content %}
+<h2>Состав команды</h2>
+<div class="row">
+    {% for p in players %}
+    <div class="col-md-4 mb-3">
+        <div class="card bg-secondary">
+            <div class="card-body">
+                <h5>{{ p.name }} ({{ p.position }})</h5>
+                <small>GK{{ p.goalkeeping }} DF{{ p.defending }} PM{{ p.playmaking }} PS{{ p.passing }} WG{{ p.winger }} SC{{ p.scoring }} SP{{ p.setpieces }} ST{{ p.stamina }}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
